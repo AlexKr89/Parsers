@@ -16,7 +16,7 @@ if response.status_code == 200:
     products = soup.find_all('div', class_='product-card__title')
 
     # Создаем CSV-файл для записи данных
-    with open('products.csv', mode='w', encoding='utf-8', newline='') as file:
+    with open('products.csv', mode='w', encoding='utf-16', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['Товар'])
 
