@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-url = "https://www.perekrestok.ru/cat/mc/1066/vse-dla-novogo-goda"
+url = input("Введите ссылку для сбора данных: ")
 
 response = requests.get(url)
 
