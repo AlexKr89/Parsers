@@ -23,11 +23,8 @@ if response.status_code == 200:
         # Выводим найденные названия продуктов и цены, записываем их в CSV
         for product in products:
             product_name = product.text.strip()
-            product_price = product.find_next('div', class_='price-new')
-            if product_price:
-                product_price = product_price.text.strip()
-            else:
-                product_price = "Цена не указана"
+            product_price_container = product.find_next('div', class_='product-card__price')
+            product_price = product_price_container.find('div', class_='price-new').text.strip() if product_price_container else "Цена не указана"
             print(f"Товар: {product_name}, Цена: {product_price}")
             writer.writerow([product_name, product_price])
 
