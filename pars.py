@@ -18,13 +18,18 @@ if response.status_code == 200:
     # Создаем CSV-файл для записи данных
     with open('products.csv', mode='w', encoding='utf-16', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(['Товар'])
+        writer.writerow(['Товар', 'Цена'])
 
-        # Выводим найденные названия продуктов и записываем их в CSV
+        # Выводим найденные названия продуктов и цены, записываем их в CSV
         for product in products:
             product_name = product.text.strip()
-            print(f"Товар: {product_name}")
-            writer.writerow([product_name])
+            product_price = product.find_next('div', class_='price-new')
+            if product_price:
+                product_price = product_price.text.strip()
+            else:
+                product_price = "Цена не указана"
+            print(f"Товар: {product_name}, Цена: {product_price}")
+            writer.writerow([product_name, product_price])
 
     print("Данные успешно записаны в products.csv")
 else:
