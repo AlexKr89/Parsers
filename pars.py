@@ -1,8 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import sys
 
-url = input("Введите ссылку для сбора данных: ")
+url = input("Введите ссылку для сбора данных: ") if sys.stdin.isatty() else "https://www.perekrestok.ru/cat/d"
 
 response = requests.get(url)
 
