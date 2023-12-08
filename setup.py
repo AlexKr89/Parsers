@@ -2,10 +2,9 @@ from cx_Freeze import setup, Executable
 
 script_name = "pars.py"
 
-# Замените "YourExecutableName" на желаемое имя .exe файла
 exe_name = "Pars_Per"
 
-executables = [Executable(script=script_name, targetName=exe_name)]
+executables = [Executable(script=script_name, base="Console")]
 
 setup(
     name="YourApp",
